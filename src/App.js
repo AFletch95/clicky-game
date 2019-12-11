@@ -11,8 +11,8 @@ class App extends Component {
 
   state = {
     score: 0,
-    topscore: 0,
     message: "Click an image to begin",
+    messageColor: "",
     colors: colors,
     clickedColors: [],
 
@@ -20,6 +20,29 @@ class App extends Component {
 
   handleColorClick = (event) => {
     console.log(event.target.dataset.id)
+    let colorID = event.target.dataset.id;
+
+    if(this.state.clickedColors.includes(colorID)) {
+      this.setState({message: "Game Over",
+                    messageColor: "red",
+                    clickedColors: [],
+                    score: 0,
+                  });
+     // this.state.clickedColors.empty();
+    }
+    else {
+      this.state.clickedColors.push(colorID)
+      this.setState({message: "Correct!",
+                    score: this.state.score + 10,
+                  messageColor: "green"})
+      
+      console.log(this.state.clickedColors);
+      for(let i=0;i<100;i++)
+      window.setTimeout(this.handleColorShuffle);
+    }
+
+    
+
   }
 
   handleColorShuffle = () => {
@@ -31,13 +54,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Topbar message={this.state.message} score={this.state.score} topscore={this.state.topscore} />
+        <Topbar message={this.state.message} score={this.state.score} messageColor={this.state.messageColor}/>
         <Jumbotron />
         <Gameboard>
 
           {this.state.colors.map(obj => (
             <CharacterCards color={obj}
-              myFunc={this.handleColorShuffle}
+              myFunc={this.handleColorClick}
             />
           ))}
 

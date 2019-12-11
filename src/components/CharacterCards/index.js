@@ -1,7 +1,6 @@
 import React from "react";
 
 function CharacterCards(props) {
-  console.log(props)
   const myStyle = {
     backgroundColor: props.color.color,
     height: "200px",
