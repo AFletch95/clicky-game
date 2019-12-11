@@ -17,10 +17,22 @@
   },
   {
     "id": 4,
-    "color": "black"
+    "color": "aqua"
   },
   {
     "id": 5,
     "color": "pink"
+  },
+  {
+    "id": 6,
+    "color": "purple"
+  },
+  {
+    "id": 7,
+    "color": "GreenYellow"
+  },
+  {
+    "id": 8,
+    "color": "brown"
   }
 ]
